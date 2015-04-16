@@ -1,0 +1,53 @@
+OSEK OSEK {
+
+   OS	ExampleOS {
+      STATUS = EXTENDED;
+      ERRORHOOK = FALSE;
+      PRETASKHOOK = FALSE;
+      POSTTASKHOOK = FALSE;
+      STARTUPHOOK = FALSE;
+      SHUTDOWNHOOK = FALSE;
+      USERESSCHEDULER = FALSE;
+      MEMMAP = FALSE;
+   };
+   
+   APPMODE = AppMode1;
+   
+   EVENT=EVENTO
+   
+   TASK TareaA {
+   	PRIORITY = 1;
+   	ACTIVATION = 1;
+   	AUTOSTART = TRUE {
+			APPMODE = AppMode1;
+   	}
+   	STACK = 128;
+   	TYPE = EXTENDED;
+   	SCHEDULE = FULL;
+   	EVENT= EVENTO
+ 	}
+ 	
+ 	TASK TareaB {
+   	PRIORITY = 1;
+   	ACTIVATION = 1;
+   	AUTOSTART = TRUE {
+			APPMODE = AppMode1;
+   	}
+   	STACK = 128;
+   	TYPE = BASIC;
+   	SCHEDULE = NON;
+ 	}
+
+ 	
+ 	   TASK TareaC {
+   	PRIORITY = 2;
+   	ACTIVATION = 1;
+   	AUTOSTART = FALSE {
+			APPMODE = AppMode1;
+   	}
+   	STACK = 128;
+   	TYPE = BASIC;
+   	SCHEDULE = NON;
+ 	}
+};
+   
